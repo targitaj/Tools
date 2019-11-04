@@ -1,0 +1,118 @@
+﻿<Window x:Class="Deleter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tools by Andrey Mosalsky" Height="495.297" Width="696" Closing="MainWindow_OnClosing">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Folder deleter">
+                <Grid>
+                    <Button Content="Select Directory" HorizontalAlignment="Left" Margin="148,32,0,0" VerticalAlignment="Top" Width="108" Name="btnSelDirectory" Click="BtnSelDirectory_OnClick"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" Name="tbPath"/>
+                    <Button Content="Delete Folder" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Name="btnDelete" Click="btnDelete_Click"/>
+                    <TextBlock  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Name="tbLog" Margin="10,109,0,0" HorizontalAlignment="Left" />
+                    <Button Content="Stop" HorizontalAlignment="Left" Margin="102,60,0,0" VerticalAlignment="Top" Width="75" Name="btnStop" Click="BtnStop_OnClick"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Latvia Salary Counter">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel HorizontalAlignment="Left">
+                        <Label>Year</Label>
+                        <TextBox Name="tbYear" Height="30" Width="150" Text="2014" TextChanged="TbSalary_OnTextChanged"/>
+                        <Label>Salary per hour</Label>
+                        <TextBox Name="tbSalary" Height="30" Width="150" Text="0" TextChanged="TbSalary_OnTextChanged"/>
+                        <Label>Dependants</Label>
+                        <TextBox Name="tbDependants" Height="30" Width="150" Text="0" TextChanged="TbSalary_OnTextChanged"/>
+                        <Label>----------------------------</Label>
+                        <Label>Average salary per month</Label>
+                        <TextBlock Text="0" Name="tbSalaryResult"></TextBlock>
+                        <Label>Average salary per month - tax</Label>
+                        <TextBlock Text="0" Name="tbTaxSalaryResult"></TextBlock>
+                        <Label>Worked hours</Label>
+                        <TextBox Name="tbWorkedHours" Height="30" Width="150" Text="0" TextChanged="TbSalary_OnTextChanged"/>
+                        <Label>Salary for worked hours</Label>
+                        <TextBlock Text="0" Name="tbSalaryForWorkedDays"></TextBlock>
+                        <Button Content="Test" Click="TestBase_OnClick"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <DataGrid Name="lbMonths" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Month" Binding="{Binding Month}" />
+                                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" />
+                                <DataGridTextColumn Header="Tax Salary" Binding="{Binding TaxSalary}" />
+                                <DataGridTextColumn Header="Week Ends" Binding="{Binding WeekEnds}" />
+                                <DataGridTextColumn Header="Holidays" Binding="{Binding Holidays}" />
+                                <DataGridTextColumn Header="Hours" Binding="{Binding Hours}" />
+                                <DataGridTextColumn Header="Working Days" Binding="{Binding WorkingDays}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Renamer">
+                <Grid>
+                    <Button Content="Select Directory" HorizontalAlignment="Left" Margin="148,32,0,0" VerticalAlignment="Top" Width="108" Name="btnSelDirectoryRenamer" Click="BtnSelDirectoryRenamer_OnClick"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" Name="tbPathRenamer"/>
+                    <Button Content="Rename" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="108" Click="btnRename_Click"/>
+                    <Button Content="AppendText" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="108" Click="btnAppendText_Click"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="150,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" Name="tbAppendedText"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="torrent tv Service">
+                <StackPanel>
+                    <!--<Button HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonBase_OnClick">Start</Button>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Click="Stop_OnClick">Stop</Button>-->
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Click="StartService_OnClick">Instal service and start it</Button>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Click="StopService_OnClick">Uninstall service</Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <TextBlock Text="H"/>
+                        <TextBox Width="40" Name="tbH1"/>
+                        <TextBlock Text="M"/>
+                        <TextBox Width="40" Name="tbM1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <TextBlock Text="H"/>
+                        <TextBox Width="40" Name="tbH2"/>
+                        <TextBlock Text="M"/>
+                        <TextBox Width="40" Name="tbM2"/>
+                    </StackPanel>
+                    <Button Content="Substruct" HorizontalAlignment="Left" Click="ButtonBase_OnClick"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <TextBlock Text="Result"/>
+                        <TextBox Width="100" Name="tbRes"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="SS.LV changes">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                            <TextBlock Text="Address: "/>
+                            <TextBox Width="200" Name="tbAddress" Text="https://www.ss.lv"/>
+                            <Button Content="Navigate To Site" Name="btnNavigateToSite" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                            <TextBlock Text="Refresh interval in minutes: "/>
+                            <TextBox Name="tbRefreshInterval" Width="40" Text="60"/>
+                        </StackPanel>
+                        <Button Content="Start Refresh" Name="btnStartRefresh" Click="BtnStartRefresh_OnClick"/>
+                        <Button IsEnabled="False" Content="Stop Refresh" Name="btnStopRefresh" Click="BtnStopRefresh_OnClick"/>
+                    </StackPanel>
+                    <WebBrowser Grid.Row="1" Name="wbSS" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
