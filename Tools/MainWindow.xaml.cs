@@ -37,6 +37,20 @@ namespace Deleter
 
         public MainWindow()
         {
+            //var lines = File.ReadAllLines(@"C:\Users\dron\Downloads\Hoopers_Master_Logs_041221_Sandown\RDT_Main_20211204.log");
+
+            //var result = string.Empty;
+
+            //foreach (var line in lines)
+            //{
+            //    if (line.Contains("processOutgoingNotifications") && !line.Contains("JHOOPER-SLAVEI3"))
+            //    {
+            //        result += line + Environment.NewLine;
+            //    }
+            //}
+
+            //File.WriteAllText(@"C:\TEMP\res.txt", result);
+
             InitializeComponent();
             th = new Thread(DeleteFolder);
 
@@ -240,6 +254,7 @@ namespace Deleter
 
         private void TbSalary_OnTextChanged(object sender, TextChangedEventArgs e)
         {
+            return;
             try
             {
                 List<SalaryPerMonth> salPerMonths = new List<SalaryPerMonth>();
@@ -499,6 +514,41 @@ namespace Deleter
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            var opnVPNConfigDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) +
+                                        @"\OpenVPN\config\";
+            var dddd = Directory.Exists(opnVPNConfigDirectory);
+
+            return;
+
+            var curDate = new DateTime(2023, 1, 1);
+
+            var result = string.Empty;
+            var curYear = 2022;
+            var fridayCounter = 0;
+
+
+            while (curDate.Year <= 2050)
+            {
+                if (curYear != curDate.Year)
+                {
+                    result += curYear + Environment.NewLine;
+                    fridayCounter = 0;
+                    curYear = curDate.Year;
+                }
+
+                if (curDate.DayOfWeek == DayOfWeek.Friday && curDate.Day == 13)
+                {
+                    result += curDate.Month + " ";
+                    fridayCounter++;
+                }
+
+                curDate = curDate.AddDays(1);
+            }
+
+            File.WriteAllText(@"C:\temp\1.txt", result);
+
+
+            return;
             _httpListener = new HttpListener();
             _serviceStarted = true;
             string url = "http://*";
